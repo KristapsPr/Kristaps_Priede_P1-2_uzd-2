@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mana Personīgā Mājaslapa</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <button id="menu-button">&#9776;</button>
+
+    <nav id="side-menu" class="hidden">
+        <ul>
+            <li><button class="nav-btn" data-section="home">Sākumlapa</button></li>
+            <li><button class="nav-btn" data-section="projekti">Projekti</button></li>
+            <li><button class="nav-btn" data-section="intreses">Intereses</button></li>
+            <li><button class="nav-btn" data-section="biografija">Biogrāfija</button></li>
+            <li><button class="nav-btn" data-section="galerija">Galerija</button></li>
+            <li><button class="nav-btn" data-section="kontakti">Kontaktu informācija</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home" class="page active">
+            <div class="content-box">
+                <img id="profile-image" alt="Mans attēls" class="profile-img" />
+                <h1>Kristaps Priede</h1>
+                <p>Mani sauc Kristaps Priede, man ir 18 gadi, mācos Rīgas Tehniskajā koledža par porgrammēšanas tehniķi, brīvajā laikā patīk pavadīt laiku ar draugiem.</p>
+            </div>
+        </section>
+
+        <section id="projekti" class="page">
+            <div class="content-box">
+                <h2>Skolas projekti</h2>
+                <div class="project-links">
+                    <a href="https://docs.google.com/document/d/1iK880nj3yL_RZFMAAKQs7598wkpXXIzBJWSm5ShFxx4/edit?tab=t.0" class="project-link" target="_blank">Kristaps_Priede_P1-2_SP_Darbs-5</a>
+                    <a href="https://docs.google.com/document/d/1C5FNoAml9RyAruC5VHtM_M7KRi5kKA05xg4-dn2gPcM/edit?tab=t.0" class="project-link" target="_blank">Kristaps_Priede_P1-2_PB2-6</a>
+                    <a href="https://docs.google.com/document/d/1dlPk2xDN4qTK16VF3oMGTG7Sw1OQDrqcrHcfXhW8vnY/edit?tab=t.0" class="project-link" target="_blank">Kristaps_Priede_P1-2_PB2-10</a>
+                    <a href="https://docs.google.com/document/d/1eu1mrbwZJtw9lu0iEKGsHtTsgZGqPloW3BvbzQKtpjw/edit?tab=t.0" class="project-link" target="_blank">Kristaps_Priede_P1-2_PB2-12</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="intreses" class="page">
+            <div class="content-box">
+                <h2>Intereses</h2>
+                <div class="interest-grid">
+                </div>
+            </div>
+        </section>
+
+        <section id="biografija" class="page">
+            <div class="content-box">
+                <h2>Biogrāfija</h2>
+                <p>    Mani sauc Kristaps Priede. Es esmu 18 gadus vecs un šobrīd mācos Rīgas Tehniskajā koledžā, kur apgūstu programmēšanas tehniķa profesiju. Tehnoloģijas un programmēšana mani aizrauj, un es vēlos nākotnē attīstīt savas prasmes šajā jomā vēl tālāk.
+
+                    Brīvajā laikā man patīk lasīt, braukt ar riteni, spēlēt videospēles un pavadīt laiku ar draugiem. Man svarīgs ir līdzsvars starp mācībām un atpūtu, tāpēc cenšos būt aktīvs un saglabāt pozitīvu attieksmi ikdienā.</p>
+            </div>
+        </section>
+
+        <section id="galerija" class="page">
+            <div class="content-box">
+                <h2>Galerija</h2>
+                <div class="gallery-wrapper">
+                    <button id="prev-btn" class="gallery-btn">⟨</button>
+                    <div class="gallery-container" id="gallery-container">
+                    </div>
+                    <button id="next-btn" class="gallery-btn">⟩</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakti" class="page">
+            <div class="content-box">
+                <h2>Kontaktu informācija</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📧 E-pasts</h3>
+                        <a href="mailto:kristapspriede98@gmail.com" class="contact-link">kristapspriede98@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📱 Instagram</h3>
+                        <a href="https://www.instagram.com/tjz_kristaps/profilecard/?igsh=amVwaWxndHFpMzh0" target="_blank" class="contact-link">@tjz_kristaps</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📞 Telefons</h3>
+                        <a href="tel:+37125157115" class="contact-link">+371 22 222 222</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer>
+        <div id="social-media">
+            <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">Facebook</a>
+            <a href="https://www.instagram.com/tjz_kristaps/profilecard/?igsh=amVwaWxndHFpMzh0" target="_blank" aria-label="Instagram">Instagram</a>
+            <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+        <div id="view-counter-box">Apmeklējumu skaits: <span id="hit-counter">...</span></div>
+        <p>&copy; <span id="year"></span> :P</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const attelaURL = "https://cdn.discordapp.com/attachments/1156863746120097874/1384088243267436666/IMG_20250526_080830.jpg?ex=68512820&is=684fd6a0&hm=598a55dc6e0c41b5f0dc80161d1395eb75820e97b64395bdad8837f36f734147";
+        const attelaElem = document.getElementById("profile-image");
+        if (attelaElem) attelaElem.src = attelaURL;
+    </script>
+</body>
+</html>

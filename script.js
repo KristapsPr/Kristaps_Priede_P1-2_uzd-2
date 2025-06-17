@@ -1,14 +1,21 @@
-const yearSpan = document.getElementById("year");
-yearSpan.textContent = new Date().getFullYear();
 
+// Set current year in footer
+const yearSpan = document.getElementById("year");
+if (yearSpan) {
+  yearSpan.textContent = new Date().getFullYear();
+}
+
+// Menu functionality
 const menuBtn = document.getElementById("menu-button");
 const sideMenu = document.getElementById("side-menu");
 const navButtons = document.querySelectorAll(".nav-btn");
 const pages = document.querySelectorAll(".page");
 
-menuBtn.addEventListener("click", () => {
-  sideMenu.classList.toggle("visible");
-});
+if (menuBtn && sideMenu) {
+  menuBtn.addEventListener("click", () => {
+    sideMenu.classList.toggle("visible");
+  });
+}
 
 navButtons.forEach(btn => {
   btn.addEventListener("click", () => {
@@ -18,29 +25,36 @@ navButtons.forEach(btn => {
       page.classList.toggle("active", page.id === target);
     });
 
-    sideMenu.classList.remove("visible");
+    if (sideMenu) {
+      sideMenu.classList.remove("visible");
+    }
   });
 });
 
+// View counter using localStorage
 const hitCounterElement = document.getElementById("hit-counter");
-const namespace = "mana-majaslapa";
-const key = "apmeklejumi";
-const url = `https://api.countapi.xyz/hit/${namespace}/${key}`;
 
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
+function updateViewCounter() {
+  try {
+    const currentViews = parseInt(localStorage.getItem('websiteViews') || '0');
+    const newViews = currentViews + 1;
+    localStorage.setItem('websiteViews', newViews.toString());
+    
     if (hitCounterElement) {
-      hitCounterElement.textContent = data.value;
+      hitCounterElement.textContent = newViews;
     }
-  })
-  .catch(error => {
-    console.error("Neizdevās ielādēt apmeklējumu skaitu:", error);
+  } catch (error) {
+    console.error("Neizdevās atjaunināt apmeklējumu skaitu:", error);
     if (hitCounterElement) {
       hitCounterElement.textContent = "nav dati";
     }
-  });
+  }
+}
 
+// Initialize view counter
+updateViewCounter();
+
+// Profile image setup
 const profileImageURL = "https://i.imgur.com/5qH6F3G.jpeg";
 const imageBox = document.getElementById("profile-image-box");
 
@@ -49,9 +63,11 @@ if (imageBox) {
   img.src = profileImageURL;
   img.alt = "Mans attēls";
   img.className = "profile-img";
+  img.loading = "lazy";
   imageBox.appendChild(img);
 }
 
+// Interests data and setup
 const interests = [
   {
     name: "Riteņbraukšana",
@@ -79,7 +95,7 @@ if (interestGrid) {
     interestItem.className = 'interest-item';
 
     interestItem.innerHTML = `
-      <img src="${interest.image}" alt="${interest.name}" onerror="this.src='https://via.placeholder.com/300x200?text=${encodeURIComponent(interest.name)}'">
+      <img src="${interest.image}" alt="${interest.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200?text=${encodeURIComponent(interest.name)}'">
       <h3>${interest.name}</h3>
       <p class="interest-description">${interest.description}</p>
     `;
@@ -88,6 +104,7 @@ if (interestGrid) {
   });
 }
 
+// Gallery setup
 const galleryImages = [
   "https://cdn.discordapp.com/attachments/1156863746120097874/1384423068859891752/Snapchat-946344648.jpg?ex=68525ff4&is=68510e74&hm=af2f2a8c517973d71f060d261181401214c5475cd21e18c3dfa956ceeb08dade&",
   "https://cdn.discordapp.com/attachments/1156863746120097874/1384423068448981023/IMG-20250525-WA0021.jpg?ex=68525ff4&is=68510e74&hm=40f40c65143ee5f14c07ee523a9b5a738854360215b74befe4550de98b7bdf4c&", 
@@ -97,11 +114,11 @@ const galleryImages = [
   "https://cdn.discordapp.com/attachments/1156863746120097874/1384423912632221826/20250610_1632030.jpg?ex=685260be&is=68510f3e&hm=e89a24782f2d34be546af5dd84fc95aa7f50ebc7b4761f56cf08286ebd40f60c&"
 ];
 
-const galleryContainer = document.getElementById("gallery-container");
+const galleryContainerElement = document.getElementById("gallery-container");
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 
-if (galleryContainer) {
+if (galleryContainerElement) {
   galleryImages.forEach((imageUrl, index) => {
     const galleryItem = document.createElement("div");
     galleryItem.className = "gallery-item";
@@ -109,22 +126,23 @@ if (galleryContainer) {
     const img = document.createElement("img");
     img.src = imageUrl;
     img.alt = `Galerijas attēls ${index + 1}`;
+    img.loading = "lazy";
 
     img.onerror = () => {
       img.src = "https://via.placeholder.com/200x150?text=Attēls+nav+pieejams";
     };
 
     galleryItem.appendChild(img);
-    galleryContainer.appendChild(galleryItem);
+    galleryContainerElement.appendChild(galleryItem);
   });
 }
 
-if (prevBtn && nextBtn && galleryContainer) {
+if (prevBtn && nextBtn && galleryContainerElement) {
   prevBtn.addEventListener("click", () => {
-    galleryContainer.scrollBy({ left: -320, behavior: "smooth" });
+    galleryContainerElement.scrollBy({ left: -320, behavior: "smooth" });
   });
 
   nextBtn.addEventListener("click", () => {
-    galleryContainer.scrollBy({ left: 320, behavior: "smooth" });
+    galleryContainerElement.scrollBy({ left: 320, behavior: "smooth" });
   });
 }

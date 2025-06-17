@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mana Personīgā Mājaslapa</title>
+    <meta name="description" content="Kristaps Priede personīgā mājaslapa - programmēšanas tehniķis no Rīgas Tehniskās koledžas" />
+    <meta name="keywords" content="Kristaps Priede, programmēšana, Rīgas Tehniskā koledža, portfolio" />
+    <meta name="author" content="Kristaps Priede" />
+    <title>Kristaps Priede - Personīgā Mājaslapa</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://cdn.discordapp.com" />
 </head>
 <body>
-    <button id="menu-button">&#9776;</button>
+    <button id="menu-button" aria-label="Atvērt navigācijas izvēlni" aria-expanded="false">&#9776;</button>
 
-    <nav id="side-menu" class="hidden">
+    <nav id="side-menu" class="hidden" role="navigation" aria-label="Galvenā navigācija">
         <ul>
             <li><button class="nav-btn" data-section="home">Sākumlapa</button></li>
             <li><button class="nav-btn" data-section="projekti">Projekti</button></li>
